@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  bitwarden:
+    image: bitwardenrs/server:latest
+    stdin_open: true
+    tty: true
+    restart: always
+    networks:
+      - database_default
+    ports:
+      - "8996:80"
+    env_file:
+      - .env
+networks:
+  database_default:
+    external: true
